@@ -13,8 +13,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 
-### Here we train BOTH text encoders ###
-
 import argparse
 import logging
 import math
