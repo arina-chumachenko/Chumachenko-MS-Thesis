@@ -58,6 +58,7 @@ from diffusers.utils.import_utils import is_xformers_available
 from nb_utils import eval_sets_core
 from utils_core import (
     SaveOutput,
+    evaluate_validation,
     get_cross_attnention_maps,
     interpolate_cross_attention_maps,
 )
