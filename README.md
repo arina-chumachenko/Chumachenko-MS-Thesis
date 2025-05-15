@@ -1,10 +1,10 @@
-**Thesis Title:** Preventing Overfitting in Subject-Driven Text-to-Image Diffusion: Regularization of Embedding and Attention Maps
+| **Thesis Title:** | Preventing Overfitting in Subject-Driven Text-to-Image Diffusion: Regularization of Embedding and Attention Maps |
 
-**Thesis Type:** MS Thesis
+| **Thesis Type:** | MS Thesis |
 
-**Author:** Arina Chumachenko
+| **Author:** | Arina Chumachenko |
 
-**Adviser:** Ivan Oseledets 
+| **Adviser:** | Ivan Oseledets |
 
 **Co-adviser:** Andrey Kuznetsov
 
