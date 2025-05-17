@@ -1,0 +1,107 @@
+# Prompt set for inanimate concepts
+
+# Background Change (40):
+a {} floats on the lake at sunrise
+a {} lies a green leaf
+a {} takes shelter from a rainstorm under a skyscraper
+a {} on an alien planet
+a {} on a tranquil lake in a rowboat, with mist rising at dawn
+a {} is placed on the left seat cushion between two leather sofas in the living room a {} inside a cupboard
+a {} crafted into a white wall, adorned with Graffiti pattern
+a {} embedded in a brick
+a {} was buried under the jungle mud
+a {} is covered by the sand on the beach
+a {} on a cobblestone street, surrounded by old, weathered buildings at dusk
+a {} on a sunlit windowsill, with curtains softly billowing in the breeze
+a {} on a snowy mountaintop, partially buried under fresh, powdery snow
+a {} resting on an antique wooden desk, next to a flickering candle
+a {} in a bustling marketplace, among stalls filled with vibrant fruits and spices a {} on a rain-soaked garden path
+a {} in the shadow of an ancient ruin
+a {} on a sandy dune at sunset
+a {} by a crackling campfire in the woods
+a {} on a moss-covered boulder by a stream
+a {} under a railway bridge, surrounded by graffiti
+a {} on a sunlit pier by a tranquil lake
+a {} on a dusty bookshelf, covered in a thin layer of forgotten time
+a {} on a cracked, sunbaked desert floor, surrounded by endless stretches of sand
+a {} hanging on a wall in a dimly lit, art-filled gallery
+a {} nestled in the tall grass of a serene meadow at dawn
+a {} on a marble countertop in a pristine, modern kitchen, reflecting soft light
+a {} buried under a layer of pebbles along the shore
+a {} partially hidden by seaweed near the tide line
+a {} on a rocky hill during a landslide, partially buried by falling debris
+a {} on a floating island in the sky, surrounded by drifting clouds
+a {} under a white bridge with a blue castle visible in the distance
+a {} on a quiet beach, shimmering under the moonlight, with waves gently lapping
+a {} in an underwater kingdom, hidden among colorful coral and seaweed
+a {} inside a laundry basket, nestled between freshly folded clothes
+a {} in a misty forest during early morning, surrounded by towering ancient trees
+a {} on a space station orbiting Earth, gently floating in the zero-gravity environment
+a {} placed to the right of the kitchen refrigerator, adding a touch of color
+a {} on a wooden boat, drifting slowly into a vast, swirling sea vortex
+
+# Concept Color Change (10):
+a black {} with a tree and autumn leaves in the background
+a green {} under a bright full moon with twinkling stars in the sky
+a brown {} sitting beside a flowing river with blooming cherry blossoms
+a red {} with a snowy mountain and pine trees in the background
+a blue {} under a clear sky with fluffy white clouds above
+a white {} beside a tranquil lake with a setting sun reflecting on the water
+a yellow {} seen from above, surrounded by tall golden wheat fields
+a silver {} seen from the front, with a bustling cityscape in the distance a black {} seen from the top
+a green seen from the side
+
+# Artistic Styles (30):
+watercolor painting of a {} in a psychedelic forest
+an impressionist painting of a {}
+a traditional Chinese painting of a {}
+an abstract painting of a {}
+a realistic sketch of a {}
+a digital painting of a {} amidst a futuristic cityscape a charcoal drawing of a {}
+in a dense, misty forest
+a surrealist painting of a {} in a dreamlike desert
+a watercolor portrait of a {} against a turbulent sea
+a pastel drawing of a {} in a serene countryside garden
+a mosaic of a {} surrounded by ancient ruins
+an impressionist painting of a {} spanning a tranquil river
+a minimalistic design of a {} with a rising sun in the background
+a vintage-style poster of a {} cruising along a coastal highway
+a {} captured in the soft light of an impressionist painting
+a {} depicted with bold, geometric lines reminiscent of cubism
+a {} portrayed with delicate, swirling paterns of art Nouveau
+a {} illustrated in style of Renaissance masterpiece
+a {} painted with the sharp contrasts and clean lines of pop art
+a {} painted with the vibrant colors and rhythmic brushstrokes of Fauvism
+a {} sketched in the Japanese ink wash painting
+a {} sculpted in the chiaroscuro of Baroque art
+a {} crafted with the abstract forms and vibrant palete of surrealism
+a {} captured in the ethereal light and pastel hues of a watercolor
+a {} depicted in the angular, expressive style of German Expressionism
+a {} illustrated in the detailed realism of a classical portrait
+a {} painted in the style vintage photograph
+a {} interpreted in the dynamic, fragmented style of futurism
+a {} depicted in the geometric abstractions of constructivism
+a {} captured in the serene, contemplative style of traditional Chinese painting
+
+# Style Compositions (20):
+an app icon of {}
+Latte art with a {} Pattern
+a lace fabric with {} pattern
+a {} style skyscraper
+a giant hydrogen balloon in the shape of {} floats in the sky
+a hard translucent candy in the shape of {}
+a
+style antique vase on exhibition
+a vase intricately painted with {} motifs, catching the flicker of candlelight in the rainy night
+a mug featuring {} patterns, illuminated by the warm light of a fireplace
+a bronze sculpture of a {} in the garden
+a ice sculpture of a {} under the table
+a chocolate sculpture of a {} on display at a dessert exhibition
+a Clay sculptures of {} delicately balanced on the edge of a wooden board
+a marble statue of a {} at the entrance of a historic building
+a giant lantern in the shape of a {}, glowing softly as it drifts upward
+a wall clock in the shape of a {}, ticking softly on the wall
+a silk scarf with a {} pattern, draped elegantly over a mannequin
+a gold pendant in the shape of a {}, hanging from a delicate chain
+a neon sign in the shape of a {}, glowing in a dimly lit alley
+a stone fountain featuring a {} design, trickling water in a quiet courtyard
