@@ -69,7 +69,7 @@ live_set = [
     'a {} adorned with tribal face paint leads a ceremonial procession',
     'a {} dressed in a feathered cape performs a ritual dance under the moonlight',
     'a {} wearing a top hat in the midst of a misty forest at dawn',
-# Artistic Styles (25):
+    # Artistic Styles (25):
     'Watercolor painting of a {} in a psychedelic forest',
     'an impressionist painting of a {}',
     'a traditional Chinese painting of a {}',
@@ -94,7 +94,7 @@ live_set = [
     'a {} interpreted in the dynamic, fragmented style of futurism',
     'a {} depicted in the geometric abstractions of constructivism',
     'a {} captured in the serene, contemplative style of traditional Chinese painting',
-# Style ompositions (10):
+    # Style ompositions (10):
     'an ice sculpture of a {} on a frozen lake',
     'an app icon of {}',
     'Latte art with a {} Pattern',
