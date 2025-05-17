@@ -71,34 +71,13 @@ def make_dict(path):
     return medium_base_res
 
 device = torch.device('cuda', 0) if torch.cuda.is_available() else torch.device('cpu')
-device
 
-method_names = ['TI', 'DB'] 
+method_names = ['CR'] 
 
 res_values = []
-
 ts_vals = []
 is_vals = []
 bis_vals = []
-
-for method_name in method_names:
-    path ="/home/mdnikolaev/aschumachenko/diffusers/examples/"
-    if method_name == 'TI':
-        base_path = path + "textual_inversion/res_TI/"
-    else:
-        base_path = path + "dreambooth/res_DB/"
-    exps_list = ['0-res-dog6_', '0-res-backpack_dog_', '0-res-berry_bowl_'] 
-    exps = [exp + method_name for exp in exps_list]
-    concepts = [exp.split('0-res-')[1].split('_' + method_name)[0] for exp in exps]
-    res = make_dict(base_path + '*/eval.cache')
-
-    for keys, values in res.items():
-        res_values.append(values)
-
-    for entry in res_values:
-        ts_vals.append(entry['TS'])
-        is_vals.append(entry['IS'])
-        bis_vals.append(entry['BIS'])
 
 
 def reshape_func(data):
