@@ -8,7 +8,7 @@ from PIL import Image
 import textwrap
 
 import sys
-sys.path.append('/home/jovyan/shares/SR006.nfs2/aschumachenko/aschumachenko/core/')
+sys.path.append('./core/')
 from nb_utils.eval_sets import base_set, live_set_core, object_set_core
 from nb_utils.configs import live_object_data
 
@@ -116,10 +116,9 @@ def main(args):
     else:
         prompt_set = object_set_core
     
-    # exp_nums = [f"{num:03}" for num in range(1, args.number_of_exps+1)]
-    exp_nums = ['000', '001', '002', '003', '004', '005', '006'] # , '007', '008'
+    exp_nums = ['']
 
-    method_name = 'CR_sdxl' # 'CR'/'CD'
+    method_name = 'CR_sdxl'
     folder_name = '3'
     
     labels = [
@@ -149,18 +148,8 @@ def main(args):
             gridspec_kw={'wspace': 0, 'hspace': 0} 
         )
     
-        # for ax in axs.flat:
-        #     ax.axis('off')
-    
         for i, exp_num in enumerate(exp_nums):
             for j, prompt in enumerate(prompt_subset):
-                # if i == 0 or i == 1:
-                #     image_path = os.path.join(
-                #     args.pretrained_model_name, f'00{i}-res-{args.concept_name}_CR/checkpoint-{args.checkpoint_idx}/',
-                #     'samples', f'ns{args.num_inference_steps}_gs{args.guidance_scale}',
-                #     'version_0', prompt.format(f"{args.placeholder_token}"), f'{image_idx}.png'
-                # )
-                # else:
                 image_path = os.path.join(
                     args.pretrained_model_name, f'{exp_num}-res-{args.concept_name}_{method_name}/checkpoint-{args.checkpoint_idx}/',
                     'samples', f'ns{args.num_inference_steps}_gs{args.guidance_scale}',
@@ -173,9 +162,6 @@ def main(args):
     
         for ax, prompt in zip(axs[0, :], prompt_subset):
             ax.set_title(split_prompt(prompt), size='small', pad=5)
-
-        # for ax, label in zip(axs[0], labels):
-        #     ax.set_ylabel(f'{label}', rotation=90, size='small', va='center', ha='right', labelpad=5) # labelpad=5,
     
         plt.tight_layout()
         plt.savefig(os.path.join(save_path, f'{picture_num}.png'))
@@ -191,37 +177,3 @@ def main(args):
 if __name__ == '__main__':
     args = parse_args()
     main(args)
-
-
-# 'ti+db_gram_noft_1e5 (sqrt pairwise loss)', # 24
-# 'ti+db_attn_noft_1e3 (pairwise_loss)', # 26
-# 'ti_emb_1.0+db', 'ti_emb_10.0+db', 'ti_emb_1e-1+db', 'ti_emb_1e3+db', 'ti_emb_1.5e-4+db', 'ti_emb_1e8+db', 'ti_emb_1e-3+db', 'ti_emb_1e-2+db'
-# 'ti+db_gram_noft_1e5 (sqrt(gram), interp to max)', 'ti+db_gram_noft_1e5 (sqrt(gram), pairwise_loss)', 'ti+db_attn_noft_1e3 (interp to max)', 'ti+db_attn_noft_1e3 (pairwise_loss)', 'ti+db_attn_noft_1e3 (interp to min)', 'ti+db_gram_noft_1e11 (interp to min)', 
-# 'ti+db_attn_1e2',
-# 'ti+db_gram_10',
-# 'ti_emb_attn+db', 
-# 'ti_emb_attn+db_attn', 
-# 'ti_emb_attn+db_attn_noft',
-# 'ti_emb_attn+db_gram_noft',
-# 'ti+db_attn_noft_1e3',
-# 'ti+db_gram_noft_1e11',
-# 'ti+db_gram_noft_1e10',
-# 'ti+db_gram_noft_1e12',
-# 'ti_emb_1.0_db',
-# 'ti_emb_10.0_db',
-# 'ti_emb_0.1_db',
-# 'ti_emb_1e3_db'
-# 'cd+db', # 1
-# 'cd_emb+db'
-# 'cd_attn_noft+db'
-# 'cd_emb_attn+db'
-# 'cd_gram+db'
-# 'cd_attn_noft_1e3+db', 
-# 'cd_gram_noft_1e11+db', 
-# 'cd_gram_noft_1e5+db (sqrt(gram), interp to max)',
-# 'cd_gram_noft_1e5+db (sqrt pairwise loss)', # 14
-# 'cd+db_gram_noft_1e5 (sqrt pairwise loss)', # 9,
-# 'cd_attn_noft_1e3+db (interp to max)',
-# 'cd_attn_noft_1e3+db (pairwise_loss)',
-# 'cd+db_attn_noft_1e3',
-# 'cd+db_gram_noft_1e11',
