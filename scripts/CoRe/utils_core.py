@@ -50,87 +50,9 @@ def define_target_token_id(tokenizer, token, prompt):
 
 def gram_matrix(attn_map):
     a, b, c, d = attn_map.size() 
-    # a = batch size(=1)
-    # b = number of feature maps
-    # (c, d) = dimensions of a f. map (N=c*d)
-    features = attn_map.reshape(a * b, c * d)  # resize F_XL into \hat F_XL
-    G = torch.mm(features, features.t())  # compute the gram product
-    # we 'normalize' the values of the gram matrix
-    # by dividing by the number of element in each feature maps.
+    features = attn_map.reshape(a * b, c * d)
+    G = torch.mm(features, features.t())
     return G.div(a * b * c * d)
-
-# def get_cross_attnention_maps(save_output, model):
-#     attention_probs_list = []
-#     for name, layer in model.named_modules():
-#         if name.endswith('attn2'):
-#             heads = layer.heads
-#             name_q = name + '.to_q'
-#             name_k = name + '.to_k'
-#             query = save_output.outputs[name_q]
-#             key = save_output.outputs[name_k]
-#             query = attn.head_to_batch_dim(layer, query)
-#             key = attn.head_to_batch_dim(layer, key)
-
-#             # get cross attention maps
-#             attention_probs = attn.get_attention_scores(layer, query, key)
-
-#             # mean across heads
-#             batch_size = attention_probs.shape[0] // heads
-#             seq_len = attention_probs.shape[1]
-#             dim = attention_probs.shape[-1]
-    
-#             attention_probs = attention_probs.view(batch_size, heads, seq_len, dim)
-#             attention_probs = attention_probs.mean(dim=1)
-
-#             sqrt_seq_len = int(math.sqrt(seq_len))
-#             attention_probs = attention_probs.view(batch_size, sqrt_seq_len, sqrt_seq_len, dim)                        
-#             attention_probs_list.append(attention_probs)
-#     return attention_probs_list
-
-def get_cross_attnention_maps(save_output, model, use_lora=False):
-    attention_probs_list = []
-    for name, layer in model.named_modules():
-        if name.endswith('attn2'):
-            heads = layer.heads
-            name_q = name + '.to_q'
-            name_k = name + '.to_k'
-            if use_lora:
-                name_q_lora = name + '.processor.to_q_lora'
-                name_k_lora = name + '.processor.to_k_lora'
-                query = save_output.outputs[name_q] + save_output.outputs[name_q_lora]
-                key = save_output.outputs[name_k] + save_output.outputs[name_k_lora]
-            else: 
-                query = save_output.outputs[name_q]
-                key = save_output.outputs[name_k]
-            query = attn.head_to_batch_dim(layer, query)
-            key = attn.head_to_batch_dim(layer, key)
-
-            # get cross attention maps
-            attention_probs = attn.get_attention_scores(layer, query, key)
-
-            # mean across heads
-            batch_size = attention_probs.shape[0] // heads
-            seq_len = attention_probs.shape[1]
-            dim = attention_probs.shape[-1]
-    
-            attention_probs = attention_probs.view(batch_size, heads, seq_len, dim)
-            attention_probs = attention_probs.mean(dim=1)
-
-            sqrt_seq_len = int(math.sqrt(seq_len))
-            attention_probs = attention_probs.view(batch_size, sqrt_seq_len, sqrt_seq_len, dim) 
-            attention_probs_list.append(attention_probs)
-    return attention_probs_list
-
-# def interpolate_cross_attention_maps(attention_probs_list):
-#     max_seq_len = max([ca.shape[1] for ca in attention_probs_list])
-#     target_size = (max_seq_len, max_seq_len)
-#     interp_attention_maps = []
-#     for ca_map in attention_probs_list:
-#         interp_ca_map = F.interpolate(ca_map.permute(0, 3, 1, 2), size=target_size, mode='bilinear')
-#         interp_ca_map = interp_ca_map.permute(0, 2, 3, 1)
-#         interp_attention_maps.append(interp_ca_map)
-#     interp_attention_maps = torch.stack(interp_attention_maps)
-#     return interp_attention_maps
 
 def interpolate_cross_attention_maps(attention_probs_list, with_gram=False, min_seq=False):
     # The interpolation to the smallest dimention of the cross-attention maps
@@ -139,12 +61,9 @@ def interpolate_cross_attention_maps(attention_probs_list, with_gram=False, min_
     else:            
         seq_len = max([ca.shape[1] for ca in attention_probs_list])        
     target_size = (seq_len, seq_len)
-    # print(f'target_size: {target_size}')
     interp_attention_maps = []
     for ca_map in attention_probs_list:
         interp_ca_map = F.interpolate(ca_map.permute(0, 3, 1, 2), size=target_size, mode='bilinear')
-        # print(f'interp_ca_map.shape: {interp_ca_map.shape}')
-        # If use gram regularization 
         if with_gram:
             interp_ca_map = gram_matrix(interp_ca_map)
         else:
