@@ -41,10 +41,8 @@ from nb_utils.experiments_viewer import ExpsViewer
 from nb_utils.clip_eval import ExpEvaluator
 from nb_utils.images_viewer import MultifolderViewer
 from nb_utils.configs import live_object_data
-# from examples.dreambooth.scripts.eval import make_dict
 
 device = torch.device('cuda', 0) if torch.cuda.is_available() else torch.device('cpu')
-# device
 
 def make_dict(path):
     ti_evaluate_cache = DistributedCache(path)
@@ -75,30 +73,30 @@ def make_dict(path):
     return medium_base_res
 
 
-# evaluator = ExpEvaluator(device)
+evaluator = ExpEvaluator(device)
 
-# base_path = "/home/mdnikolaev/aschumachenko/diffusers/examples/dreambooth/res_DB/"
-# exps = ["0-res-dog6_DB"] # [a for a in os.listdir(base_path)]
-# exps_viewer = ExpsViewer(
-#     base_path=base_path,
-#     exp_filter_fn=lambda x: x in list(exps),
-#     ncolumns=4, 
-#     lazy_load=True, 
-#     evaluator=evaluator
-# )
+base_path = "./core/res_CR/"
+exps = [a for a in os.listdir(base_path)]
+exps_viewer = ExpsViewer(
+    base_path=base_path,
+    exp_filter_fn=lambda x: x in list(exps),
+    ncolumns=4, 
+    lazy_load=True, 
+    evaluator=evaluator
+)
 
-# stats = exps_viewer.evaluate(
-#     exps_names=exps,
-#     checkpoint_idx='500',
-#     inference_specs=('50', '7.0')
-# )
+stats = exps_viewer.evaluate(
+    exps_names=exps,
+    checkpoint_idx='300',
+    inference_specs=('50', '7.0')
+)
 
-# for key, value in stats.items():
-#     exp_cache = Cache(os.path.join(value['config']['output_dir'], 'eval.cache'))
-#     exp_cache.update({key: value})
-#     print('ready')
+for key, value in stats.items():
+    exp_cache = Cache(os.path.join(value['config']['output_dir'], 'eval.cache'))
+    exp_cache.update({key: value})
+    print('ready')
 
-ti_evaluate_cache = DistributedCache(path_template='/home/mdnikolaev/aschumachenko/diffusers/examples/dreambooth/res_DB/*/eval.cache')
+ti_evaluate_cache = DistributedCache(path_template='./core/res_CR/*/eval.cache')
 # ti_evaluate_cache.keys()
 # ti_evaluate_cache[key]
 # print(ti_evaluate_cache.keys())
@@ -109,12 +107,12 @@ d = {k: {**v, **aggregate_similarities(v)} for k, v in cache_data.items()}
 # d.keys()
 # d[key]
 
-res = make_dict('/home/mdnikolaev/aschumachenko/diffusers/examples/dreambooth/res_DB/*/eval.cache')
+res = make_dict('./core/res_CR/*/eval.cache')
 
 # запустив код, можно посмотреть сохраненные картинки, если они были правильно сохранены
 ti_exps_viewer = ExpsViewer(
     # Base path to experiments
-    '/home/mdnikolaev/aschumachenko/diffusers/examples/dreambooth/res_DB',
+    './core/res_CR',
     # Filter experiments
     # exp_filter_fn=lambda x: x in [x for x in os.listdir('results') if "CD" not in x],
     # Filter prompts
